@@ -32,8 +32,8 @@ describe('usage tests', () => {
         r.errors.join('\n').split(/\n+/).should.deep.equal([
           'Usage: usage -x NUM -y NUM',
           'Options:',
-          '  --help     Show help  [boolean]',
-          '  --version  Show version number  [boolean]',
+          '      --help     Show help  [boolean]',
+          '      --version  Show version number  [boolean]',
           '  -x  [required]',
           '  -y  [required]',
           'Missing required argument: y'
@@ -56,8 +56,8 @@ describe('usage tests', () => {
         r.errors.join('\n').split(/\n+/).should.deep.equal([
           'Usage: usage -w NUM -m NUM',
           'Options:',
-          '  --help     Show help  [boolean]',
-          '  --version  Show version number  [boolean]',
+          '      --help     Show help  [boolean]',
+          '      --version  Show version number  [boolean]',
           '  -w  [required]',
           '  -m  [required]',
           'Missing required argument: m'
@@ -80,8 +80,8 @@ describe('usage tests', () => {
         r.errors.join('\n').split(/\n+/).should.deep.equal([
           'Usage: usage -w NUM -m NUM',
           'Options:',
-          '  --help     Show help  [boolean]',
-          '  --version  Show version number  [boolean]',
+          '      --help     Show help  [boolean]',
+          '      --version  Show version number  [boolean]',
           '  -w  [required]',
           '  -m  [required]',
           'Not enough non-option arguments: got 0, need at least 1'
@@ -121,8 +121,8 @@ describe('usage tests', () => {
           r.errors.join('\n').split(/\n+/).should.deep.equal([
             'Usage: usage -x NUM -y NUM',
             'Options:',
-            '  --help     Show help  [boolean]',
-            '  --version  Show version number  [boolean]',
+            '      --help     Show help  [boolean]',
+            '      --version  Show version number  [boolean]',
             '  -x  [required]',
             '  -y  [required]',
             'Missing required argument: y'
@@ -144,8 +144,8 @@ describe('usage tests', () => {
           r.errors.join('\n').split(/\n+/).should.deep.equal([
             'Usage: usage -w NUM -m NUM',
             'Options:',
-            '  --help     Show help  [boolean]',
-            '  --version  Show version number  [boolean]',
+            '      --help     Show help  [boolean]',
+            '      --version  Show version number  [boolean]',
             '  -w  [required]',
             '  -m  [required]',
             'Missing required argument: m'
@@ -169,8 +169,8 @@ describe('usage tests', () => {
         r.errors.join('\n').split(/\n+/).should.deep.equal([
           'Usage: usage -w NUM -m NUM',
           'Options:',
-          '  --help     Show help  [boolean]',
-          '  --version  Show version number  [boolean]',
+          '      --help     Show help  [boolean]',
+          '      --version  Show version number  [boolean]',
           '  -w  [required]',
           '  -m  [required]',
           'Not enough non-option arguments: got 0, need at least 1'
@@ -192,8 +192,8 @@ describe('usage tests', () => {
       r.errors.join('\n').split(/\n+/).should.deep.equal([
         'Usage: usage -x NUM -y NUM',
         'Options:',
-        '  --help     Show help  [boolean]',
-        '  --version  Show version number  [boolean]',
+        '      --help     Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
         '  -x  [required]',
         '  -y  [required]',
         'Missing required arguments: x, y',
@@ -729,8 +729,8 @@ describe('usage tests', () => {
     )
     r.errors.join('\n').split(/\n+/).should.deep.equal([
       'Options:',
-      '  --help     Show help  [boolean]',
-      '  --version  Show version number  [boolean]',
+      '      --help     Show help  [boolean]',
+      '      --version  Show version number  [boolean]',
       '  -f, --foo  [default: 5]',
       'Not enough non-option arguments: got 0, need at least 1'
     ])
@@ -1074,8 +1074,8 @@ describe('usage tests', () => {
     r.should.have.property('exit').and.equal(true)
     r.errors.join('\n').split(/\n+/).should.deep.equal([
       'Options:',
-      '  --help     Show help  [boolean]',
-      '  --version  Show version number  [boolean]',
+      '      --help     Show help  [boolean]',
+      '      --version  Show version number  [boolean]',
       '  -y  [required]',
       'Examples:',
       '  usage something       description',
@@ -1103,10 +1103,10 @@ describe('usage tests', () => {
           'Usage: usage -x NUM [-y NUM]',
           '',
           'Options:',
-          '  --help     Show help  [boolean]',
-          '  --version  Show version number  [boolean]',
-          '  -x         an option  [required]',
-          '  -y         another option',
+          '      --help     Show help  [boolean]',
+          '      --version  Show version number  [boolean]',
+          '  -x             an option  [required]',
+          '  -y             another option',
           '',
           'Missing required argument: x'
         ])
@@ -1133,10 +1133,10 @@ describe('usage tests', () => {
           'Usage: usage -x NUM [-y NUM]',
           '',
           'Options:',
-          '  --help     Show help  [boolean]',
-          '  --version  Show version number  [boolean]',
-          '  -x         an option  [required]',
-          '  -y         another option',
+          '      --help     Show help  [boolean]',
+          '      --version  Show version number  [boolean]',
+          '  -x             an option  [required]',
+          '  -y             another option',
           '',
           'Missing required argument: x'
         ])
@@ -1176,8 +1176,8 @@ describe('usage tests', () => {
       r.should.have.property('exit').and.equal(true)
       r.logs.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --help     Show help  [boolean]',
-        '  --version  Show version number  [boolean]',
+        '      --help     Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
         '  -y  [required]'
       ])
     })
@@ -1651,9 +1651,9 @@ describe('usage tests', () => {
 
       r.logs.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --version   Show version number                                      [boolean]',
-        `  -f, --file  ${noColorAddedDescr}                      [string] [required]`,
-        '  -h, --help  Show help                                                [boolean]'
+        '      --version  Show version number                                   [boolean]',
+        `  -f, --file     ${noColorAddedDescr}                   [string] [required]`,
+        '  -h, --help     Show help                                             [boolean]'
       ])
     })
 
@@ -1674,9 +1674,9 @@ describe('usage tests', () => {
 
       r.logs.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --version   Show version number                                      [boolean]',
-        `  -f, --file  ${yellowDescription}                      [string] [required]`,
-        '  -h, --help  Show help                                                [boolean]'
+        '      --version  Show version number                                   [boolean]',
+        `  -f, --file     ${yellowDescription}                   [string] [required]`,
+        '  -h, --help     Show help                                             [boolean]'
       ])
     })
   })
@@ -1697,8 +1697,8 @@ describe('usage tests', () => {
         '  usage upload    upload something',
         '  usage download  download something from somewhere',
         'Options:',
-        '  --help     Show help  [boolean]',
-        '  --version  Show version number  [boolean]',
+        '      --help     Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
         '  -y  [required]',
         'Missing required argument: y'
       ])
@@ -1863,7 +1863,7 @@ describe('usage tests', () => {
         '  -h  Show help  [boolean]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]'
+        '      --version  Show version number  [boolean]'
       ])
     })
 
@@ -1902,8 +1902,8 @@ describe('usage tests', () => {
         '  -i  [boolean]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]'
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]'
       ])
     })
 
@@ -1935,8 +1935,8 @@ describe('usage tests', () => {
         '  -q  [boolean]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]'
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]'
       ])
     })
 
@@ -1976,8 +1976,8 @@ describe('usage tests', () => {
         '  -q  [boolean]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]'
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]'
       ])
     })
 
@@ -2011,8 +2011,8 @@ describe('usage tests', () => {
         '  -i  [boolean]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]',
         '  -q  [boolean]'
       ])
     })
@@ -2049,8 +2049,8 @@ describe('usage tests', () => {
         '  -i  [boolean]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]',
         '  -q  [boolean]'
       ])
     })
@@ -2235,8 +2235,8 @@ describe('usage tests', () => {
         'do something',
         '',
         'Options:',
-        '  --version   Show version number  [boolean]',
-        '  -h, --help  Show help  [boolean]'
+        '      --version  Show version number  [boolean]',
+        '  -h, --help     Show help  [boolean]'
       ])
     })
   })
@@ -2252,8 +2252,8 @@ describe('usage tests', () => {
 
       r.errors.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --help     Show help  [boolean]',
-        '  --version  Show version number  [boolean]',
+        '      --help     Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
         '  -y  [required]',
         'for more info view the manual at http://example.com',
         'Missing required argument: y'
@@ -2272,8 +2272,8 @@ describe('usage tests', () => {
 
       r.errors.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --help     Show help  [boolean]',
-        '  --version  Show version number  [boolean]',
+        '      --help     Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
         '  -y  [required]',
         'for more info view the manual at http://example.com',
         'you can also find us on slack at http://devtoolscommunity.herokuapp.com',
@@ -2292,8 +2292,8 @@ describe('usage tests', () => {
 
       r.errors.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --help     Show help  [boolean]',
-        '  --version  Show version number  [boolean]',
+        '      --help     Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
         '  -y  [required]',
         'Try \'usage --long-help\' for more information',
         'Missing required argument: y'
@@ -2579,9 +2579,9 @@ describe('usage tests', () => {
 
       r.logs.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]',
-        '  -f, --foo  foo option'
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]',
+        '  -f, --foo      foo option'
       ])
     })
 
@@ -2596,8 +2596,8 @@ describe('usage tests', () => {
 
       r.logs.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]',
         '  -f, --foo  [required]'
       ])
     })
@@ -2614,9 +2614,9 @@ describe('usage tests', () => {
 
       r.logs.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]',
-        '  -f, --foo  bar  [string]'
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]',
+        '  -f, --foo      bar  [string]'
       ])
     })
 
@@ -2633,9 +2633,9 @@ describe('usage tests', () => {
 
       r.logs.join('\n').split(/\n+/).should.deep.equal([
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]',
-        '  -f, --foo  bar  [number]'
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]',
+        '  -f, --foo      bar  [number]'
       ])
     })
   })
@@ -2937,11 +2937,11 @@ describe('usage tests', () => {
 
       r.logs[0].split('\n').should.deep.equal([
         'Heroes:',
-        "  --batman  not the world's happiest guy  [string] [default: \"Bruce Wayne\"]",
-        '  -h        Show help  [boolean]',
+        "      --batman  not the world's happiest guy  [string] [default: \"Bruce Wayne\"]",
+        '  -h            Show help  [boolean]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]'
+        '      --version  Show version number  [boolean]'
       ])
     })
 
@@ -2989,12 +2989,12 @@ describe('usage tests', () => {
 
       r.logs[0].split('\n').should.deep.equal([
         'Options:',
-        '  -h         Show help  [boolean]',
-        '  --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]',
+        '      --version  Show version number  [boolean]',
         '',
         'Heroes:',
-        '  --batman',
-        '  --robin'
+        '      --batman',
+        '      --robin'
       ])
     })
 
@@ -3011,11 +3011,11 @@ describe('usage tests', () => {
 
       r.logs[0].split('\n').should.deep.equal([
         'Heroes:',
-        '  --batman  [string]',
+        '      --batman  [string]',
         '',
         'Options:',
-        '  --version  Show version number  [boolean]',
-        '  -h         Show help  [boolean]'
+        '      --version  Show version number  [boolean]',
+        '  -h             Show help  [boolean]'
       ])
     })
 
