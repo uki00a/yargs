@@ -8,14 +8,12 @@
 
 <br>
 
-[![Build Status][travis-image]][travis-url]
-[![NPM version][npm-image]][npm-url]
-[![js-standard-style][standard-image]][standard-url]
-[![Coverage][coverage-image]][coverage-url]
-[![Conventional Commits][conventional-commits-image]][conventional-commits-url]
-[![Slack][slack-image]][slack-url]
-
 ## Description :
+
+A fork of the original yargs library targeting Deno.
+
+The original source is found here: https://github.com/yargs/yargs/tree/v15.3.0
+
 Yargs helps you build interactive command line tools, by parsing arguments and generating an elegant user interface.
 
 It gives you:

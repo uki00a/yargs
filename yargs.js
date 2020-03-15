@@ -4,23 +4,24 @@
 async function requiresNode8OrGreater () {}
 requiresNode8OrGreater()
 
-const argsert = require('./lib/argsert')
-const fs = require('fs')
-const Command = require('./lib/command')
-const Completion = require('./lib/completion')
-const Parser = require('yargs-parser')
-const path = require('path')
-const Usage = require('./lib/usage')
-const Validation = require('./lib/validation')
-const Y18n = require('y18n')
-const objFilter = require('./lib/obj-filter')
-const setBlocking = require('set-blocking')
-const applyExtends = require('./lib/apply-extends')
-const { globalMiddlewareFactory } = require('./lib/middleware')
-const YError = require('./lib/yerror')
-const processArgv = require('./lib/process-argv')
+import argsert from './lib/argsert.js'
+import Command from './lib/command.js'
+import Completion from './lib/completion.js'
+import { Parser } from './lib/deps.js'
+import Y18n from './lib/y18n.js'
+import Usage from './lib/usage.js'
+import Validation from './lib/validation.js'
+import objFilter from './lib/obj-filter.js'
+import { setBlocking } from './lib/deps.js'
+import applyExtends from './lib/apply-extends.js'
+import { globalMiddlewareFactory } from './lib/middleware.js'
+import YError from './lib/yerror.js'
+import * as processArgv from './lib/process-argv.js'
+import * as compat from './lib/compat.js'
 
-exports = module.exports = Yargs
+const { process, require, path, fs } = compat
+
+export default Yargs
 function Yargs (processArgs, cwd, parentRequire) {
   processArgs = processArgs || [] // handle calling yargs().
 
@@ -36,13 +37,13 @@ function Yargs (processArgs, cwd, parentRequire) {
   let handlerFinishCommand = null
 
   const y18n = Y18n({
-    directory: path.resolve(__dirname, './locales'),
+    directory: path.resolve('./locales'),
     updateFiles: false
   })
 
   self.middleware = globalMiddlewareFactory(globalMiddleware, self)
 
-  if (!cwd) cwd = process.cwd()
+  if (!cwd) cwd = compat.cwd()
 
   self.scriptName = function (scriptName) {
     self.customScriptName = true
@@ -888,9 +889,11 @@ function Yargs (processArgs, cwd, parentRequire) {
   }
 
   function guessVersion () {
-    const obj = pkgUp()
+    // TODO guessVersion() is not supported currently.
+    // const obj = pkgUp()
 
-    return obj.version || 'unknown'
+    // return obj.version || 'unknown'
+    return 'unknown'
   }
 
   let helpOpt = null
@@ -1271,7 +1274,8 @@ function Yargs (processArgs, cwd, parentRequire) {
 
   function guessLocale () {
     if (!detectLocale) return
-    const locale = process.env.LC_ALL || process.env.LC_MESSAGES || process.env.LANG || process.env.LANGUAGE || 'en_US'
+    const env = compat.env()
+    const locale = env.LC_ALL || env.LC_MESSAGES || env.LANG || env.LANGUAGE || 'en_US'
     self.locale(locale.replace(/[.:].*/, ''))
   }
 
@@ -1284,11 +1288,11 @@ function Yargs (processArgs, cwd, parentRequire) {
 }
 
 // allow consumers to directly use the version of yargs-parser used by yargs
-exports.Parser = Parser
+export { Parser }
 
 // rebase an absolute path to a relative one with respect to a base directory
 // exported for tests
-exports.rebase = rebase
+export { rebase }
 function rebase (base, dir) {
   return path.relative(base, dir)
 }
