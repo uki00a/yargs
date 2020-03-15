@@ -1,13 +1,3 @@
-<p align="center">
-  <img width="250" src="/yargs-logo.png">
-</p>
-<h1 align="center"> Yargs </h1>
-<p align="center">
-  <b >Yargs be a node.js library fer hearties tryin' ter parse optstrings</b>
-</p>
-
-<br>
-
 ## Description :
 
 A fork of the original yargs library targeting Deno.
@@ -42,9 +32,10 @@ npm i yargs@next
 
 ### Simple Example
 
-````javascript
-#!/usr/bin/env node
-const argv = require('yargs').argv
+````typescript
+#!/usr/bin/env deno --allow-read --allow-env
+import yargs from 'https://denopkg.com/uki00a/yargs/deno-support/mod.ts'
+const argv = yargs.argv
 
 if (argv.ships > 3 && argv.distance < 53.5) {
   console.log('Plunder more riffiwobbles!')
@@ -64,8 +55,10 @@ Retreat from the xupptumblers!
 ### Complex Example
 
 ```javascript
-#!/usr/bin/env node
-require('yargs') // eslint-disable-line
+#!/usr/bin/env deno --allow-read --allow-env
+import yargs from 'https://denopkg.com/uki00a/yargs/deno-support/mod.ts'
+
+yargs // eslint-disable-line
   .command('serve [port]', 'start the server', (yargs) => {
     yargs
       .positional('port', {
@@ -86,23 +79,9 @@ require('yargs') // eslint-disable-line
 
 Run the example above with `--help` to see the help for the application.
 
-## TypeScript
-
-yargs has type definitions at [@types/yargs][type-definitions].
-
-```
-npm i @types/yargs --save-dev
-```
-
-See usage examples in [docs](/docs/typescript.md).
-
 ## Webpack
 
 See usage examples of yargs with webpack in [docs](/docs/webpack.md).
-
-## Community :
-
-Having problems? want to contribute? join our [community slack](http://devtoolscommunity.herokuapp.com).
 
 ## Documentation :
 
