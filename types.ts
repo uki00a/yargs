@@ -1,4 +1,4 @@
-// These types  adapted from following URLs:
+// These types are adapted from following URLs:
 // - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/a69707ec6c40905215857b12828ae0583dcb6c16/types/yargs/index.d.ts
 // - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/a69707ec6c40905215857b12828ae0583dcb6c16/types/yargs-parser/index.d.ts
 
