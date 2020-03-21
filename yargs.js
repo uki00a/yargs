@@ -7,7 +7,7 @@ requiresNode8OrGreater()
 import argsert from './lib/argsert.js'
 import Command from './lib/command.js'
 import Completion from './lib/completion.js'
-import Parser from './lib/port/yargs-parser/index.js'
+import { Parser } from './lib/deps.js'
 import Y18n from './lib/port/y18n/index.js'
 import Usage from './lib/usage.js'
 import Validation from './lib/validation.js'
