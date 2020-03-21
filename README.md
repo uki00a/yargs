@@ -34,7 +34,7 @@ npm i yargs@next
 
 ````typescript
 #!/usr/bin/env deno --allow-read --allow-env
-import yargs from 'https://denopkg.com/uki00a/yargs/deno-support/mod.ts'
+import yargs from 'https://denopkg.com/uki00a/yargs/mod.ts'
 const argv = yargs.argv
 
 if (argv.ships > 3 && argv.distance < 53.5) {
@@ -102,16 +102,7 @@ See usage examples of yargs with webpack in [docs](/docs/webpack.md).
   * [Customizing Yargs' Parser](/docs/advanced.md#customizing)
 * [Contributing](/contributing.md)
 
-[travis-url]: https://travis-ci.org/yargs/yargs
-[travis-image]: https://img.shields.io/travis/yargs/yargs/master.svg
-[npm-url]: https://www.npmjs.com/package/yargs
-[npm-image]: https://img.shields.io/npm/v/yargs.svg
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
 [standard-url]: http://standardjs.com/
 [conventional-commits-image]: https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg
 [conventional-commits-url]: https://conventionalcommits.org/
-[slack-image]: http://devtoolscommunity.herokuapp.com/badge.svg
-[slack-url]: http://devtoolscommunity.herokuapp.com
-[type-definitions]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/yargs
-[coverage-image]: https://img.shields.io/badge/dynamic/json?color=brightgreen&label=coverage&query=branches&suffix=%25&url=https%3A%2F%2Fraw.githubusercontent.com%2Fyargs%2Fyargs%2Fmaster%2F.nycrc&cacheSeconds=3600
-[coverage-url]: https://github.com/yargs/yargs/blob/master/.nycrc
