@@ -1,15 +1,16 @@
 'use strict'
 /* global context, describe, it, beforeEach, afterEach */
 
-const expect = require('chai').expect
-const fs = require('fs')
-const path = require('path')
-const checkOutput = require('./helpers/utils').checkOutput
-const english = require('../locales/en.json')
-let yargs
-const YError = require('../lib/yerror')
+import { expect } from './deps/chai.ts'
+import { fs, path, process } from '../lib/compat.js'
+import { checkOutput } from './helpers/utils.js'
+import english from '../locales/en.json'
+import YError from '../lib/yerror.js'
 
-require('chai').should()
+/**
+ * @type {import('../types.ts').default.Argv}
+ */
+let yargs
 
 const noop = () => {}
 const implicationsFailedPattern = new RegExp(english['Implications failed:'])
@@ -17,11 +18,11 @@ const implicationsFailedPattern = new RegExp(english['Implications failed:'])
 describe('yargs dsl tests', () => {
   const oldProcess = { versions: {} }
 
-  beforeEach(() => {
+  beforeEach(async () => {
     oldProcess.argv = process.argv
     oldProcess.defaultApp = process.defaultApp
     oldProcess.versions.electron = process.versions.electron
-    yargs = require('../')
+    yargs = (await import('../mod.ts')).default
   })
 
   afterEach(() => {

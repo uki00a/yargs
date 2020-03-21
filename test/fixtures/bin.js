@@ -1,5 +1,6 @@
-#!/usr/bin/env node
-var argv = require('../../index')
+#!/usr/bin/env deno
+import yargs from '../../mod.ts'
+var argv = yargs
   .help('help')
   .completion()
   .argv

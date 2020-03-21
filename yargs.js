@@ -7,12 +7,12 @@ requiresNode8OrGreater()
 import argsert from './lib/argsert.js'
 import Command from './lib/command.js'
 import Completion from './lib/completion.js'
-import { Parser } from './lib/deps.js'
-import Y18n from './lib/y18n.js'
+import Parser from './lib/port/yargs-parser/index.js'
+import Y18n from './lib/port/y18n/index.js'
 import Usage from './lib/usage.js'
 import Validation from './lib/validation.js'
 import objFilter from './lib/obj-filter.js'
-import { setBlocking } from './lib/deps.js'
+import { setBlocking, getCallerFile } from './lib/deps.js'
 import applyExtends from './lib/apply-extends.js'
 import { globalMiddlewareFactory } from './lib/middleware.js'
 import YError from './lib/yerror.js'
@@ -390,7 +390,7 @@ function Yargs (processArgs, cwd, parentRequire) {
   self.commandDir = function (dir, opts) {
     argsert('<string> [object]', [dir, opts], arguments.length)
     const req = parentRequire || require
-    command.addDirectory(dir, self.getContext(), req, require('get-caller-file')(), opts)
+    command.addDirectory(dir, self.getContext(), req, getCallerFile(), opts)
     return self
   }
 

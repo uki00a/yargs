@@ -1,18 +1,15 @@
 'use strict'
 /* global describe, it, beforeEach, afterEach */
 
-const { expect } = require('chai')
-const { globalMiddlewareFactory } = require('../lib/middleware')
+import { expect } from './deps/chai.ts'
+import { globalMiddlewareFactory } from '../lib/middleware.js'
 let yargs
-require('chai').should()
 
 describe('middleware', () => {
-  beforeEach(() => {
-    yargs = require('../')
-  })
-  afterEach(() => {
-    delete require.cache[require.resolve('../')]
-  })
+  beforeEach(() => import('../mod.ts').then(mod => yargs = mod.default))
+  //afterEach(() => {
+  //  delete require.cache[require.resolve('../')]
+  //})
 
   it('should add a list of callbacks to global middleware', () => {
     const globalMiddleware = []

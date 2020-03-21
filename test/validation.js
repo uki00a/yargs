@@ -1,10 +1,10 @@
 'use strict'
 /* global describe, it, beforeEach */
 
-const checkUsage = require('./helpers/utils').checkOutput
-const expect = require('chai').expect
-const english = require('../locales/en.json')
-let yargs = require('../')
+import { checkOutput as checkUsage } from './helpers/utils.js'
+import { expect } from './deps/chai.ts'
+import english from '../locales/en.json'
+import yargs from '../mod.ts'
 
 require('chai').should()
 

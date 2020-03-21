@@ -1,2 +1,2 @@
 'use strict'
-process.env.LC_ALL = 'en_US'
+Deno.env().LC_ALL = 'en_US'

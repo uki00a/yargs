@@ -1,10 +1,8 @@
 'use strict'
 /* global it */
 
-const yargs = require('../yargs')
-const Parser = require('yargs-parser')
-
-require('chai').should()
+import yargs from '../yargs.ts'
+import Parser from '../lib/port/yargs-parser/index.js'
 
 it('should expose yargs-parser as Parser', () => {
   yargs.Parser.should.equal(Parser)

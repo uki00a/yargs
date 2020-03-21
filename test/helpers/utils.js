@@ -1,21 +1,32 @@
 'use strict'
-const Hash = require('hashish')
+import Hash from 'https://dev.jspm.io/hashish@0.0.4'
+import { process } from '../../lib/compat.js'
 
 // capture terminal output, so that we might
 // assert against it.
-exports.checkOutput = function checkOutput (f, argv, cb) {
+export function checkOutput (f, argv, cb) {
   let exit = false
   const _exit = process.exit
   const _emit = process.emit
-  const _env = process.env
-  const _argv = process.argv
+  const _onerror = window.onerror
+  const _env = Object.getOwnPropertyDescriptor(process, 'env')
+  const _argv = Object.getOwnPropertyDescriptor(process, 'argv')
   const _error = console.error
   const _log = console.log
   const _warn = console.warn
 
   process.exit = () => { exit = true }
-  process.env = Hash.merge(process.env, { _: 'node' })
-  process.argv = argv || ['./usage']
+  const env = Hash.merge(process.env, { _: 'node' })
+  Object.defineProperty(process, 'env', {
+    get() {
+      return env
+    }
+  })
+  Object.defineProperty(process, 'argv', {
+    get() {
+      return argv || ['./usage']
+    }
+  });
 
   const errors = []
   const logs = []
@@ -40,6 +51,9 @@ exports.checkOutput = function checkOutput (f, argv, cb) {
 
       return _emit.apply(this, arguments)
     }
+    window.onerror = (message, source, lineno, colno, error) => {
+      cb(error, done())
+    }
 
     f()
   } else {
@@ -55,8 +69,9 @@ exports.checkOutput = function checkOutput (f, argv, cb) {
   function reset () {
     process.exit = _exit
     process.emit = _emit
-    process.env = _env
-    process.argv = _argv
+    window.onerror = _onerror
+    Object.defineProperty(process, 'env', _env)
+    Object.defineProperty(process, 'argv', _argv)
 
     console.error = _error
     console.log = _log

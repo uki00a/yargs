@@ -1,10 +1,9 @@
 'use strict'
 /* global describe, it */
 
-const argsert = require('../lib/argsert')
-const checkOutput = require('./helpers/utils').checkOutput
-
-require('chai').should()
+import './deps/chai.ts'
+import argsert from '../lib/argsert.js'
+import { checkOutput } from './helpers/utils.js'
 
 describe('Argsert', () => {
   it('does not warn if optional argument is not provided', () => {

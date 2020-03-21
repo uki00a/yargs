@@ -1,14 +1,8 @@
 'use strict'
 /* global describe, it, before, after */
 
-const spawn = require('cross-spawn')
-const path = require('path')
-const which = require('which')
-const rimraf = require('rimraf')
-const cpr = require('cpr')
-const fs = require('fs')
-
-require('chai').should()
+import { process, path, fs } from '../lib/compat.js'
+// const which = require('which')
 
 describe('integration tests', () => {
   it('should run as a shell script with no arguments', (done) => {
@@ -19,15 +13,15 @@ describe('integration tests', () => {
     testArgs('./bin.js', ['a', 'b', 'c'], done)
   })
 
-  it('should run as a node script with no arguments', (done) => {
-    testArgs('node bin.js', [], done)
+  it('should run as a deno script with no arguments', (done) => {
+    testArgs('bin.js', [], done)
   })
 
-  it('should run as a node script with arguments', (done) => {
-    testArgs('node bin.js', ['x', 'y', 'z'], done)
+  it('should run as a deno script with arguments', (done) => {
+    testArgs('bin.js', ['x', 'y', 'z'], done)
   })
 
-  describe('path returned by "which"', () => {
+  describe.skip('path returned by "which"', () => {
     it('should match the actual path to the script file', (done) => {
       which('node', (err, resolvedPath) => {
         if (err) return done(err)
@@ -109,7 +103,7 @@ describe('integration tests', () => {
   })
 
   if (process.platform !== 'win32') {
-    describe('load root package.json', () => {
+    describe.skip('load root package.json', () => {
       before(function (done) {
         this.timeout(10000)
         // create a symlinked, and a physical copy of yargs in
@@ -204,20 +198,27 @@ describe('integration tests', () => {
 function testCmd (cmd, args, cb) {
   const cmds = cmd.split(' ')
 
-  const bin = spawn(cmds[0], cmds.slice(1).concat(args.map(String)), {
-    cwd: path.join(__dirname, '/fixtures')
+  const dirname = path.dirname(new URL(import.meta.url).pathname)
+  const bin = Deno.run({
+    args: [
+      Deno.execPath(),
+      'run',
+      '--allow-read',
+      '--allow-env',
+      path.join(dirname, '/fixtures', cmds[0]),
+      ...(cmds.slice(1).concat(args.map(String)))
+    ],
+    stdout: 'piped',
+    stderr: 'piped'
   })
 
-  let stdout = ''
-  bin.stdout.setEncoding('utf8')
-  bin.stdout.on('data', (str) => { stdout += str })
-
-  let stderr = ''
-  bin.stderr.setEncoding('utf8')
-  bin.stderr.on('data', (str) => { stderr += str })
-
-  bin.on('close', (code) => {
-    cb(code, stdout, stderr)
+  Promise.all([
+    bin.status(),
+    Deno.readAll(bin.stdout),
+    Deno.readAll(bin.stderr)
+  ]).then(([stat, stdout, stderr]) => {
+    const decoder = new TextDecoder()
+    cb(stat.code, decoder.decode(stdout), decoder.decode(stderr))
   })
 }
 
@@ -232,4 +233,12 @@ function testArgs (cmd, args, done) {
     _.map(String).should.deep.equal(args.map(String))
     done()
   })
+}
+
+function cpr(src, dest) {
+  return fs.copy(src, dest)
+}
+
+function rimraf(path) {
+  return fs.emptyDir(path)
 }

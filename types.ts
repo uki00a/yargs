@@ -885,4 +885,7 @@ namespace yargs {
   type PositionalOptionsType = "boolean" | "number" | "string";
 }
 
+import Parser = yargsParser.Parser;
+
+export { Parser };
 export default yargs;

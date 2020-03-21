@@ -1,5 +1,7 @@
-#!/usr/bin/env node
-require('../../index')
+#!/usr/bin/env deno
+import yargs from '../../mod.ts'
+
+yargs
   .option('foo', {
     nargs: 1
   })

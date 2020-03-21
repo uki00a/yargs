@@ -1,10 +1,10 @@
-#!/usr/bin/env node
+#!/usr/bin/env deno
 
 // pretend we are a TTY
-process.stdout.isTTY = true
-process.stderr.isTTY = true
+// process.stdout.isTTY = true
+// process.stderr.isTTY = true
 
-var yargs = require('../../index')
+import yargs from '../../mod.ts'
 var y = yargs.command('download <url> <files..>', 'make a get HTTP request')
   .help()
 

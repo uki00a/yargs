@@ -1,10 +1,10 @@
 'use strict'
 /* global describe, it, beforeEach */
-const yargs = require('../')
-const expect = require('chai').expect
-const checkOutput = require('./helpers/utils').checkOutput
+import yargs from '../mod.ts'
+import { expect } from './deps/chai.ts'
+import { checkOutput } from './helpers/utils.js'
+import { process } from '../lib/compat.js'
 
-require('chai').should()
 const noop = () => {}
 
 describe('Command', () => {
@@ -591,7 +591,7 @@ describe('Command', () => {
     })
   })
 
-  describe('commandDir', () => {
+  describe.skip('commandDir', () => {
     it('supports relative dirs', () => {
       const r = checkOutput(() => yargs('--help').wrap(null)
         .commandDir('fixtures/cmddir')
@@ -1479,7 +1479,7 @@ describe('Command', () => {
   describe('async', () => {
     // addresses https://github.com/yargs/yargs/issues/510
     it('fails when the promise returned by the command handler rejects', (done) => {
-      const error = new Error()
+      const error = new Error();
       yargs('foo')
         .command('foo', 'foo command', noop, (yargs) => Promise.reject(error))
         .fail((msg, err) => {
