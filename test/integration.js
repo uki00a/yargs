@@ -1,8 +1,10 @@
 'use strict'
 /* global describe, it, before, after */
 
-import { process, path, fs } from '../lib/compat.js'
+import { compat } from '../lib/deps.js'
 // const which = require('which')
+
+const { process, path, fs } = compat
 
 describe('integration tests', () => {
   it('should run as a shell script with no arguments', (done) => {

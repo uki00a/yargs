@@ -3,10 +3,12 @@
 
 import { checkOutput as checkUsage } from './helpers/utils.js'
 import * as colors from './deps/colors.ts'
-import { path, process } from '../lib/compat.js'
+import { compat } from '../lib/deps.js'
 import yargs from '../mod.ts'
 import { rebase } from '../yargs.ts'
 import YError from '../lib/yerror.js'
+
+const { path, process } = compat
 
 const noop = () => {}
 

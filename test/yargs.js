@@ -2,10 +2,12 @@
 /* global context, describe, it, beforeEach, afterEach */
 
 import { expect } from './deps/chai.ts'
-import { fs, path, process } from '../lib/compat.js'
+import { compat } from '../lib/deps.js'
 import { checkOutput } from './helpers/utils.js'
 import english from '../locales/en.json'
 import YError from '../lib/yerror.js'
+
+const { fs, path, process } = compat
 
 /**
  * @type {import('../types.ts').default.Argv}

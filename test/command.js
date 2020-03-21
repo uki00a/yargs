@@ -3,7 +3,9 @@
 import yargs from '../mod.ts'
 import { expect } from './deps/chai.ts'
 import { checkOutput } from './helpers/utils.js'
-import { process } from '../lib/compat.js'
+import { compat } from '../lib/deps.js'
+
+const { process } = compat
 
 const noop = () => {}
 

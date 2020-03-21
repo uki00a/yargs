@@ -2,7 +2,9 @@
 /* global describe, it, beforeEach, after */
 import { checkOutput as checkUsage } from './helpers/utils.js'
 import yargs from '../mod.ts'
-import { process } from '../lib/compat.js'
+import { compat } from '../lib/deps.js'
+
+const { process } = compat
 
 describe('Completion', () => {
   beforeEach(() => {

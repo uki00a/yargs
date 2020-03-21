@@ -1,6 +1,8 @@
 'use strict'
 import Hash from 'https://dev.jspm.io/hashish@0.0.4'
-import { process } from '../../lib/compat.js'
+import { compat } from '../../lib/deps.js'
+
+const { process } = compat
 
 // capture terminal output, so that we might
 // assert against it.

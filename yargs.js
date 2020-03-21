@@ -12,12 +12,11 @@ import Y18n from './lib/port/y18n/index.js'
 import Usage from './lib/usage.js'
 import Validation from './lib/validation.js'
 import objFilter from './lib/obj-filter.js'
-import { setBlocking, getCallerFile } from './lib/deps.js'
+import { setBlocking, getCallerFile, compat } from './lib/deps.js'
 import applyExtends from './lib/apply-extends.js'
 import { globalMiddlewareFactory } from './lib/middleware.js'
 import YError from './lib/yerror.js'
 import * as processArgv from './lib/process-argv.js'
-import * as compat from './lib/compat.js'
 
 const { process, require, path, fs } = compat
 

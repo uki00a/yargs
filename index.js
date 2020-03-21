@@ -4,7 +4,9 @@
 // require('yargs/yargs')(process.argv.slice(2))
 import yargs from './yargs.js'
 import * as processArgv from './lib/process-argv.js'
-import { require } from './lib/compat.js'
+import { compat } from './lib/deps.js'
+
+const require = compat.require
 
 Argv(processArgv.getProcessArgvWithoutBin())
 
